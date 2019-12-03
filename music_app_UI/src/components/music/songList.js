@@ -25,14 +25,30 @@ class SongList extends PureComponent{
   }
 
   componentDidMount(){
-   const keyId=window.g_history.location.musicId || -1;
-   const is_on=window.g_history.location.is_on || false;
+   const keyId=window.g_history.location.musicId !==undefined ? window.g_history.location.musicId:-1;
+   const is_on=window.g_history.location.is_on !==undefined?window.g_history.location.is_on: undefined;
    if(is_on !==undefined && is_on==true){
      window.document.getElementById(keyId).setAttribute("src",PlayIcon);
+     this.setState({
+       record_id:keyId,
+     })
    }else if(is_on !==undefined && is_on!==true){
      window.document.getElementById(keyId).setAttribute("src",PauseIcon);
+     this.setState({
+      record_id:-1,
+    })
    }
 
+  };
+
+  handlePlayMusic=(path)=>{
+
+    router.push({
+      pathname:path,
+      query:{
+        payload:1,
+      }
+    })
   };
 
     handleHeader=(songSum)=>{
@@ -62,7 +78,7 @@ class SongList extends PureComponent{
 
       window.document.getElementById(keyId).setAttribute("src",PlayIcon);
 
-      window.document.getElementById(keyId+'song').play();
+      //window.document.getElementById(keyId+'song').play();
 
       this.setState({
         record_id:keyId,
@@ -78,7 +94,7 @@ class SongList extends PureComponent{
       if(this.state.record_id === keyId){
         //点击的是正在播放的歌曲则暂停播放
         window.document.getElementById(keyId).setAttribute("src",PauseIcon);
-        window.document.getElementById(keyId+'song').pause()
+        // window.document.getElementById(keyId+'song').pause()
 
         this.setState({
           record_id:-1, //表示现在没有歌曲播放
@@ -86,10 +102,10 @@ class SongList extends PureComponent{
       }else{
         //点击的是另外未播放的歌曲
         window.document.getElementById(keyId).setAttribute("src",PlayIcon);
-        window.document.getElementById(keyId+'song').play()
+        // window.document.getElementById(keyId+'song').play()
         //并且将正在播放的歌曲停止
         window.document.getElementById(this.state.record_id).setAttribute("src",PauseIcon);
-        window.document.getElementById(this.state.record_id+'song').pause()
+        // window.document.getElementById(this.state.record_id+'song').pause()
         //更新正在播放的歌曲
         this.setState({
           record_id:keyId,
@@ -109,8 +125,9 @@ class SongList extends PureComponent{
     render() {
 
       const {
-        songSum=12,
+        songSum=0,
         songs,
+        PlayMusicPath='/musicStore/playMusic',
 
       }=this.props;
 
@@ -136,19 +153,13 @@ class SongList extends PureComponent{
                       thumb={MusicIcon}
                       // extra={ <img style={{zIndex:2}} src={PauseIcon} onClick={()=>this.handleTest()}></img>}
                       style={{width:"90%"}}
-                      onClick={() => operation([
-                        { text: '创建歌单', onPress: () => console.log('标为未读被点击了') },
-                        { text: '收藏到歌单', onPress: () => console.log('置顶聊天被点击了') },
-                      ])}
+                      onClick={() => this.handlePlayMusic(PlayMusicPath)}
                       className={styles.songItem}
                     >
                       <span className={styles.songName}>{value.songName}</span>
                       <span className={styles.songAuthor}>{value.songAuthor}</span>
 
                     </Item>
-                    <audio id={key+'song'}>
-                      <source src={value.audioPath} type="audio/mpeg"/>
-                    </audio>
                     <img id={key} style={{width:"22px",height:"22px",marginRight:"10px"}} src={this.state.thumb_img} onClick={()=>this.handlePlayImage(key)}></img>
                   </div>
                 )

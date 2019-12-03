@@ -14,7 +14,7 @@ class Nav extends PureComponent{
        // query:{
        //   payload:this.props.musicId,
        // }
-       musicId:1,
+       musicId:this.props.musicId,
        is_on:true,//是否播放
      })
    }
@@ -30,8 +30,8 @@ class Nav extends PureComponent{
 
     return (
       <NavBar
-        mode="light"
-        style={{backgroundColor:"#1296db"}}
+        mode={isIndex?"light":'none'}
+        style={isIndex?{backgroundColor:"#1296db"}:{backgroundColor:"transparent"}}
         icon={isIndex?'':<img src={ReturnIcon}/>}
         leftContent={[
           isIndex?'':"返回"

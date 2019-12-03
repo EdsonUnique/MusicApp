@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import Nav from "@/components/music/Nav";
 import PlayPannel from "@/components/music/PlayPannel";
+import styles from './playMusic.less'
 
 class PlayMusic extends Component {
 
@@ -15,10 +16,10 @@ class PlayMusic extends Component {
     }=this.props;
 
     return(
-      <div>
+      <div className={styles.container}>
 
-        <Nav isIndex={false} musicId={payload}/>
-        {/*<PlayPannel/>*/}
+        <Nav isIndex={false} musicId={payload} title={''}/>
+        <PlayPannel/>
 
       </div>
     )

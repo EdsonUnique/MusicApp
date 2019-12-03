@@ -29,7 +29,7 @@ class MainMusicStore extends PureComponent{
       music:{
         musicList:musicList,
       },
-      musicId,
+     
 
     }=this.props;
 
@@ -42,7 +42,7 @@ class MainMusicStore extends PureComponent{
 
           <SearchButton/>
 
-          <SongList songs={musicList} songSum={musicList.length} musicId={musicId}></SongList>
+          <SongList songs={musicList} songSum={musicList.length} ></SongList>
         </div>
       </div>
     )
