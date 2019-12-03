@@ -1,0 +1,12 @@
+**/*.md
+**/*.svg
+**/*.ejs
+**/*.html
+**/*.jpg
+**/*.png
+**/node_modules
+package.json
+.umi
+.umi-production
+.gitkeep
+.DS_Store
