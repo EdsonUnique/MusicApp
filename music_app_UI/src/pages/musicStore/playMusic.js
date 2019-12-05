@@ -5,21 +5,24 @@ import styles from './playMusic.less'
 
 class PlayMusic extends Component {
 
+  constructor(props){
+    super(props);
+    this.state={
+
+    }
+  };
+
   render(){
 
     const {
-      location:{
-        query:{
-          payload:payload,
-        }
-      }
+      song,songList,
     }=this.props;
 
     return(
-      <div className={styles.container}>
+      <div className={styles.container} >
 
-        <Nav isIndex={false} musicId={payload} title={''}/>
-        <PlayPannel/>
+        <Nav isIndex={false} musicId={1} title={''}/>
+        <PlayPannel song={song} songList={songList}/>
 
       </div>
     )

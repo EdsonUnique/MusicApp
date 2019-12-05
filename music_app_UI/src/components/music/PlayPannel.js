@@ -21,19 +21,58 @@ class PlayPannel extends Component{
   constructor(props){
     super(props);
     this.state={
-      is_on:false,
+      is_on:true,
       changeId:1,
+      duration:10,
     }
   };
 
+  componentDidMount(){
+
+    const audioEl=window.parent.document.getElementById("audioIframe").contentWindow.document.getElementById("audioId");
+    const progressEl=window.document.getElementById('progress');
+    const durationEl=window.document.getElementById('duration');
+    const slider=window.document.getElementById('slider');
+
+    audioEl.onplay=()=>{
+      window.document.getElementById("pause").setAttribute("src",PlayIcon);
+
+      this.setState({
+        is_on:true,
+
+      })
+    };
+
+    audioEl.onplaying=()=>{
+
+      let minutes=audioEl.duration/60;
+      let seconds=audioEl.duration%60;
+      let minutesStr=minutes.toString().substr(0,minutes.toString().indexOf('.'));
+      let secondsStr=seconds.toString().substr(0,seconds.toString().indexOf('.'))
+
+      durationEl.innerHTML=(minutesStr.length>=2?minutesStr:('0'+minutesStr))+":"
+        +(secondsStr.length>=2?secondsStr:('0'+secondsStr));
+
+
+    }
+
+
+  };
+
   handlePlay=()=>{
+
+    const audioEl=window.parent.document.getElementById("audioIframe").contentWindow.document.getElementById("audioId");
+
+
     if(this.state.is_on===false){
       window.document.getElementById("pause").setAttribute("src",PlayIcon);
+      audioEl.play();
       this.setState({
         is_on:true,
       })
     }else{
       window.document.getElementById("pause").setAttribute("src",PauseIcon);
+      audioEl.pause();
       this.setState({
         is_on:false,
       })
@@ -81,12 +120,17 @@ class PlayPannel extends Component{
 
   render(){
 
+    const{
+      song,
+      songList,
+    }=this.props;
+
     return (
       <div className={styles.container}>
         <WingBlank>
           <div className={styles.songDiv}>
-            <span className={styles.songs}>玫瑰少年</span><br/><br/>
-            <span className={styles.songs2}>玫瑰少年</span>
+            <span className={styles.songs}>{song && song.songName}</span><br/><br/>
+            <span className={styles.songs2}>{song && song.songAuthor}</span>
           </div>
           <div className={styles.musicIcon}>
 
@@ -97,11 +141,11 @@ class PlayPannel extends Component{
               {/*  <source src="" type={""}/>*/}
               {/*</audio>*/}
               <Slider
+                id={'slider'}
                 style={{ marginLeft: 30, marginRight: 30 }}
                 defaultValue={10}
                 min={0}
-                max={30}
-                // marks={{30:"dd"}}
+                max={this.state.duration}
                 trackStyle={{
                   backgroundColor: '#bbb',
                   height: '5px',
@@ -119,6 +163,10 @@ class PlayPannel extends Component{
                   backgroundColor: 'blue',
                 }}
               />
+              <div className={styles.marks}>
+                <span id={'progress'}>00:00</span>
+                <span id={'duration'}>00:00</span>
+              </div>
             </div>
             <div className={styles.controls2}>
               <img id={"changeMusic"} src={changeMusicIcon} style={{width:"30px",height:"30px"}} onClick={()=>this.handleChangeMusic(this.state.changeId)}></img>

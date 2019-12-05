@@ -11,7 +11,7 @@ const tabBarData = [
   {
     title: '媒体库',
     icon: MusicStoreIcon,
-    link: '/musicStore',
+    link: '/main',
   },
 
   {

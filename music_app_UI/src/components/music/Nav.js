@@ -8,16 +8,7 @@ class Nav extends PureComponent{
 
   handleBack=()=>{
 
-   if(window.g_history.location.pathname === '/musicStore/playMusic'){
-     router.push({
-       pathname:'/musicStore',
-       // query:{
-       //   payload:this.props.musicId,
-       // }
-       musicId:this.props.musicId,
-       is_on:true,//是否播放
-     })
-   }
+   window.g_history.goBack();
   };
 
 

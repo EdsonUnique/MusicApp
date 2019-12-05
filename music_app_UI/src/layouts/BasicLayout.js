@@ -8,11 +8,15 @@ import '@/layouts/nprogress.less'
 NProgress.configure({ showSpinner: false })
 
 // 底部有bar菜单
-const BarRoutes = ['/musicStore', '/userCenter',]
+const BarRoutes = ['/musicStore', '/userCenter','/main']
 
 class BasicLayout extends PureComponent {
   render() {
-    const { children, location, loading } = this.props
+
+    const {
+      children,
+      location,
+      loading } = this.props
 
     let currHref = ''
     const { href } = window.location // 浏览器地址栏中地址
@@ -31,7 +35,7 @@ class BasicLayout extends PureComponent {
         <div>
           {/*<TransitionGroup>*/}
             {/*<CSSTransition key={location.pathname} classNames="fade" timeout={200}>*/}
-              {children}
+            {children}
             {/*</CSSTransition>*/}
           {/*</TransitionGroup>*/}
         </div>
@@ -40,7 +44,10 @@ class BasicLayout extends PureComponent {
 
     return (
       <div style={{ overflowX: 'hidden' }}>
-        <MenuBar pathname={location.pathname}>{children}</MenuBar>
+        <MenuBar pathname={location.pathname}>
+
+          {children}
+        </MenuBar>
       </div>
     )
   }

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import router from 'umi/router'
 import styles from './songList.less'
-import { List,Modal, Button, WhiteSpace, WingBlank  } from 'antd-mobile';
+import {List, Modal, Button, WhiteSpace, WingBlank, Toast} from 'antd-mobile';
 import PlayIcon  from '../../assets/icon/播放.svg'
 import PauseIcon from '../../assets/icon/暂停.svg'
 import MusicIcon from '../../assets/icon/音符.svg'
@@ -46,7 +46,8 @@ class SongList extends PureComponent{
     router.push({
       pathname:path,
       query:{
-        payload:1,
+        song:this.props.song,
+        songList:this.props.songs,
       }
     })
   };
@@ -71,53 +72,65 @@ class SongList extends PureComponent{
       )
     };
 
-  handlePlayImage=(keyId)=>{
+  handlePlayImage=(value)=>{
 
 
-    if(this.state.record_id === -1 && keyId>-1){//无歌曲播放
+    const el= window.parent.document.getElementById('audioIframe').contentWindow.document.getElementById("audioId");
 
-      window.document.getElementById(keyId).setAttribute("src",PlayIcon);
+    if(el){
+      if(this.state.record_id === -1 && value.songId>-1){//无歌曲播放
 
-      //window.document.getElementById(keyId+'song').play();
+        //window.document.getElementById(value.songId).setAttribute("src",PlayIcon);
 
-      this.setState({
-        record_id:keyId,
-      });
-      router.push({
-        pathname:'/musicStore/playMusic',
-        query:{
-          payload:keyId,
-        }
-      })
-    }else if(this.state.record_id !== -1 && keyId>-1){//有歌曲播放
-
-      if(this.state.record_id === keyId){
-        //点击的是正在播放的歌曲则暂停播放
-        window.document.getElementById(keyId).setAttribute("src",PauseIcon);
-        // window.document.getElementById(keyId+'song').pause()
+        el.setAttribute('src',value.audioPath);
+        el.play();
 
         this.setState({
-          record_id:-1, //表示现在没有歌曲播放
-        })
-      }else{
-        //点击的是另外未播放的歌曲
-        window.document.getElementById(keyId).setAttribute("src",PlayIcon);
-        // window.document.getElementById(keyId+'song').play()
-        //并且将正在播放的歌曲停止
-        window.document.getElementById(this.state.record_id).setAttribute("src",PauseIcon);
-        // window.document.getElementById(this.state.record_id+'song').pause()
-        //更新正在播放的歌曲
-        this.setState({
-          record_id:keyId,
-        })
+          record_id:value.songId,
+        });
         router.push({
-          pathname:'/musicStore/playMusic',
+          pathname:'/playMusic',
           query:{
-            payload:keyId,
+            song:value,
+            songList:this.props.songs,
           }
         })
-      }
+      }else if(this.state.record_id !== -1 && value.songId>-1){//有歌曲播放
 
+        if(this.state.record_id === value.songId){
+          //点击的是正在播放的歌曲则暂停播放
+          window.document.getElementById(value.songId).setAttribute("src",PauseIcon);
+          el.pause()
+
+          this.setState({
+            record_id:-1, //表示现在没有歌曲播放
+          })
+        }else{
+          //点击的是另外未播放的歌曲
+          //将正在播放的歌曲停止
+          el.pause();
+          window.document.getElementById(this.state.record_id).setAttribute("src",PauseIcon);
+          //更换歌曲
+          el.setAttribute("src",value.audioPath);
+          el.play()
+          // window.document.getElementById(this.state.record_id+'song').pause()
+          //更新正在播放的歌曲
+          this.setState({
+            record_id:value.songId,
+          })
+          router.push({
+            pathname:'/playMusic',
+            query:{
+              song:value,
+              songList:this.props.songs,
+            }
+          })
+        }
+
+      }
+    }
+    else{
+      Toast.fail("服务器错误！")
     }
 
   };
@@ -127,7 +140,7 @@ class SongList extends PureComponent{
       const {
         songSum=0,
         songs,
-        PlayMusicPath='/musicStore/playMusic',
+        PlayMusicPath='/playMusic',
 
       }=this.props;
 
@@ -144,7 +157,7 @@ class SongList extends PureComponent{
             className={styles.myList}
           >
             {
-              songs && songs.map((value,key)=>{
+              songs && songs!==undefined && songs.map((value,key)=>{
 
                 return(
 
@@ -160,7 +173,7 @@ class SongList extends PureComponent{
                       <span className={styles.songAuthor}>{value.songAuthor}</span>
 
                     </Item>
-                    <img id={key} style={{width:"22px",height:"22px",marginRight:"10px"}} src={this.state.thumb_img} onClick={()=>this.handlePlayImage(key)}></img>
+                    <img id={key} style={{width:"22px",height:"22px",marginRight:"10px"}} src={this.state.thumb_img} onClick={()=>this.handlePlayImage(value)}></img>
                   </div>
                 )
 
