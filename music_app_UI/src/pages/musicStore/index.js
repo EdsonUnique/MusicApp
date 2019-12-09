@@ -13,8 +13,8 @@ class Index extends Component{
     const el=window.document.getElementById('myFrame');
 
     if(el && el!==undefined){
-      el.setAttribute('height',window.document.body.clientHeight);
-      el.setAttribute('width',window.document.body.clientWidth);
+      el.setAttribute('height',window.innerHeight);
+      el.setAttribute('width',window.innerWidth);
     }
 
   };
@@ -27,7 +27,7 @@ class Index extends Component{
         <iframe id={"audioIframe"} src={'#/audioPlay'} hidden>
 
         </iframe>
-        <iframe id={'myFrame'} src={"#/main"} height={window.document.body.clientHeight} width={window.document.body.clientWidth}  frameBorder={'0'}>
+        <iframe id={'myFrame'} src={"#/main"} height={window.innerHeight} width={window.innerWidth}  frameBorder={'0'}>
         </iframe>
       </div>
     )

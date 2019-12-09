@@ -8,7 +8,7 @@ class Nav extends PureComponent{
 
   handleBack=()=>{
 
-   window.g_history.goBack();
+    window.g_history.goBack();
   };
 
 

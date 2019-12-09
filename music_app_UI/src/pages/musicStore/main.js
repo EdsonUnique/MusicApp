@@ -15,6 +15,7 @@ class Main extends PureComponent{
   };
 
   componentDidMount(){
+
     const musicStore=window.document.getElementById('musicStore');
     const playMusic=window.document.getElementById('playMusic');
     if(window.location.hash.includes('#/main')){

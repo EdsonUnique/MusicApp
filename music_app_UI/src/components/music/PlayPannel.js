@@ -1,6 +1,6 @@
 import React,{Component} from 'react'
 import styles from '@/components/music/PlayPannel.less'
-import {WingBlank,Slider,Icon,Modal} from "antd-mobile";
+import {WingBlank,Slider,Icon,Modal,Toast} from "antd-mobile";
 import PauseIcon from '@/assets/icon/pause.svg';
 import PlayIcon from '@/assets/icon/play.svg';
 import PreIcon from '@/assets/icon/pre.svg';
@@ -11,6 +11,7 @@ import RepeatIcon from '@/assets/icon/单曲循环.svg';
 
 
 import StoreIcon from '@/assets/icon/收藏.svg'
+import {instanceOf} from "prop-types";
 
 
 const operation = Modal.operation;
@@ -38,21 +39,34 @@ class PlayPannel extends Component{
     const progressEl=window.document.getElementById('progress');
     const durationEl=window.document.getElementById('duration');
 
-    audioEl.onplay=()=>{
-      window.document.getElementById("pause").setAttribute("src",PlayIcon);
-
+    audioEl.onloadstart=()=>{
+      window.document.getElementById("pause").setAttribute("src",PauseIcon);
       this.setState({
-        is_on:true,
-
+        duration:0,
+        is_on:false,
+        audioCurrentTime:0,
       })
+      durationEl.innerHTML=this.handleTimeStr(this.state.duration);
+
     };
 
+    audioEl.onerror=()=>{
+      if( isNaN(audioEl.duration)){
+        Toast.info('无该歌曲资源！')
+        return;
+      }
+    };
+
+
+
     audioEl.onplaying=()=>{
+      window.document.getElementById("pause").setAttribute("src",PlayIcon);
 
       durationEl.innerHTML=this.handleTimeStr(audioEl.duration);
 
       this.setState({
-        duration:audioEl.duration
+        duration:audioEl.duration,
+        is_on:true,
       })
 
     };
@@ -64,20 +78,20 @@ class PlayPannel extends Component{
       })
     };
 
-    let changeId=this.state.changeId;
     audioEl.onended=()=>{
-
-      if(changeId===2){
+      if(this.state.changeId===2){
         audioEl.loop=true;
+        audioEl.play();
+        audioEl.loop=false;
       }else{
         this.handleNext(this.state.song.songId,this.state.songList);
       }
-
     };
 
 
 
   };
+
 
   handleChangeMusicTime=sliderTime=>{
 
@@ -155,6 +169,7 @@ class PlayPannel extends Component{
 
     audioEl.pause();
     audioEl.setAttribute('src',songList[preId].audioPath);
+    el.setAttribute('songId',songList[preId].songId);
     this.setState({
       pre:preId,
       song:songList[preId],
@@ -190,6 +205,7 @@ class PlayPannel extends Component{
 
     audioEl.pause();
     audioEl.setAttribute('src',songList[nextId].audioPath);
+    el.setAttribute('songId',songList[nextId].songId);
     this.setState({
       next:nextId,
       song:songList[nextId],
