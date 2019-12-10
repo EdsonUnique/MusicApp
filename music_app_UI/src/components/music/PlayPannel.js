@@ -35,9 +35,26 @@ class PlayPannel extends Component{
 
   componentDidMount(){
 
+
     const audioEl=window.parent.document.getElementById("audioIframe").contentWindow.document.getElementById("audioId");
     const progressEl=window.document.getElementById('progress');
     const durationEl=window.document.getElementById('duration');
+
+    //已有歌曲在播放，则初始化
+    if(audioEl.paused===false){
+      this.setState({
+        duration:audioEl.duration,
+        is_on:true,
+      })
+
+      window.document.getElementById("pause").setAttribute("src",PlayIcon);
+
+      durationEl.innerHTML=this.handleTimeStr(audioEl.duration);
+
+
+
+    }
+
 
     audioEl.onloadstart=()=>{
       window.document.getElementById("pause").setAttribute("src",PauseIcon);
@@ -169,7 +186,7 @@ class PlayPannel extends Component{
 
     audioEl.pause();
     audioEl.setAttribute('src',songList[preId].audioPath);
-    el.setAttribute('songId',songList[preId].songId);
+    audioEl.setAttribute('songId',songList[preId].songId);
     this.setState({
       pre:preId,
       song:songList[preId],
@@ -205,7 +222,7 @@ class PlayPannel extends Component{
 
     audioEl.pause();
     audioEl.setAttribute('src',songList[nextId].audioPath);
-    el.setAttribute('songId',songList[nextId].songId);
+    audioEl.setAttribute('songId',songList[nextId].songId);
     this.setState({
       next:nextId,
       song:songList[nextId],

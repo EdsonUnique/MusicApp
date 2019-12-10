@@ -113,13 +113,21 @@ class SongList extends PureComponent{
 
         if(this.state.record_id === value.songId){
           //点击的是正在播放的歌曲则暂停播放
-          window.document.getElementById(value.songId).setAttribute("src",PauseIcon);
-          el.setAttribute('songId','-1');
-          el.pause()
-
-          this.setState({
-            record_id:-1, //表示现在没有歌曲播放
+          //直接跳转
+          router.push({
+            pathname:'/playMusic',
+            query:{
+              song:value,
+              songList:this.props.songs,
+            }
           })
+          // window.document.getElementById(value.songId).setAttribute("src",PauseIcon);
+          // el.setAttribute('songId','-1');
+          // el.pause()
+          //
+          // this.setState({
+          //   record_id:-1, //表示现在没有歌曲播放
+          // })
         }else{
           //点击的是另外未播放的歌曲
           //将正在播放的歌曲停止

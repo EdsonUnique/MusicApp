@@ -32,7 +32,7 @@ export default {
         //   webpackChunkName: true,
         // },
         title: {
-          defaultTitle: 'template',
+          defaultTitle: 'music-yx',
         },
         dll: false,
         pwa: false,
