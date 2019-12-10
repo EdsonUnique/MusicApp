@@ -67,6 +67,7 @@ export default {
   },
   outputPath: './deploy/dist',
   hash: true,
+  base:'/MusicApp',
   alias: {
     '@': path.resolve(__dirname, 'src'),
   },
