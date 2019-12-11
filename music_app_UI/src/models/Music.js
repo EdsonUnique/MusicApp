@@ -14,6 +14,7 @@ export default {
 
   effects:{
 
+    //获取库中所有歌曲
     *fetchMusicList({payload},{call,put}){
 
       const response=yield call(api.fetchMusicList);

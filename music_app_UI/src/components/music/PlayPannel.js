@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import styles from '@/components/music/PlayPannel.less'
-import {WingBlank,Slider,Icon,Modal,Toast} from "antd-mobile";
+import { connect } from 'react-redux'
+import {WingBlank,Slider,Icon,Modal,Toast,List} from "antd-mobile";
 import PauseIcon from '@/assets/icon/pause.svg';
 import PlayIcon from '@/assets/icon/play.svg';
 import PreIcon from '@/assets/icon/pre.svg';
@@ -10,18 +11,22 @@ import RandomIcon from '@/assets/icon/randomPlay.svg';
 import RepeatIcon from '@/assets/icon/单曲循环.svg';
 
 
-import StoreIcon from '@/assets/icon/收藏.svg'
-import {instanceOf} from "prop-types";
-
-
+const prompt = Modal.prompt;
 const operation = Modal.operation;
+const alert = Modal.alert;
+const Item =List.Item;
 
+
+@connect(({musicList})=>({
+  musicList,
+}))
 class PlayPannel extends Component{
 
 
   constructor(props){
     super(props);
     this.state={
+      modal1: false,
       is_on:true,
       changeId:0,//播放方式：0 顺序播放  1 随机播放 2 重复播放
       duration:0, //歌曲时长
@@ -105,7 +110,12 @@ class PlayPannel extends Component{
       }
     };
 
+    //获取所有歌单
+    const {dispatch}=this.props;
 
+    dispatch({
+      type:'musicList/fetchMusicLists',
+    })
 
   };
 
@@ -231,10 +241,20 @@ class PlayPannel extends Component{
 
   };
 
-  handleStore=()=>{
-    //收藏歌单
+  handleStoreInMusicList=(songListId)=>{
 
+    alert(songListId)
   };
+
+
+
+
+    // operation(
+    //   musicLists.map((value,key) => {
+    //     return { text: value.songListName, onPress: () => console.log(value.songListName) }
+    //   })
+    // );
+
 
   handleChangeMusic=id=>{
     //播放顺序
@@ -268,11 +288,54 @@ class PlayPannel extends Component{
       }
     }
   };
+  showModal = key => (e) => {
+    // e.preventDefault(); // 修复 Android 上点击穿透
+    this.setState({
+      [key]: true,
+    });
+  };
+  onClose = key => () => {
+    this.setState({
+      [key]: false,
+    });
+  };
+
+  handleCreateMusicList=()=>prompt('新建歌单', '',
+    [
+      {
+        text: '取消',
+        onPress: value => new Promise((resolve) => {
+          setTimeout(() => {
+            resolve();
+          }, 500);
+        }),
+      },
+      {
+        text: '确定',
+        onPress: value => new Promise((resolve, reject) => {
+
+          this.props.dispatch({
+            type:'musicList/create',
+            payload:{
+              songListName:value,
+            }
+          })
+            resolve();
+
+          setTimeout(() => {
+            reject();
+          }, 1000);
+        }),
+      },
+    ], '请输入歌单名', null, ['请输入歌单名'])
 
   render(){
 
     const{
       songList,
+      musicList:{
+        musicLists,
+      }
     }=this.props;
 
     return (
@@ -287,9 +350,6 @@ class PlayPannel extends Component{
           </div>
           <div className={styles.controls}>
             <div >
-              {/*<audio controls>*/}
-              {/*  <source src="" type={""}/>*/}
-              {/*</audio>*/}
               <Slider
                 id={'slider'}
                 style={{ marginLeft: 30, marginRight: 30 }}
@@ -326,11 +386,35 @@ class PlayPannel extends Component{
               <img id={"next"} src={NextIcon} style={{width:"40px",height:"30px"}} onClick={()=>this.handleNext(this.state.song && this.state.song.songId,songList)}></img>
 
               <Icon type={"ellipsis"} size={{width:"40px",height:"30px"}} color={"grey"} onClick={()=>operation([
-                { text: '创建歌单', onPress: () => console.log('标为未读被点击了') },
-                { text: '添加到歌单',  onPress: () => console.log('置顶聊天被点击了') },
+                { text: '创建歌单', onPress: this.handleCreateMusicList },
+                { text: '添加到歌单',  onPress:this.showModal('modal1') },
               ])}/>
             </div>
           </div>
+
+          <Modal
+            visible={this.state.modal1}
+            transparent
+            maskClosable={false}
+            onClose={this.onClose('modal1')}
+            title="已建歌单"
+            footer={[{ text: '取消', onPress: () => { this.onClose('modal1')(); } }]}
+          >
+            <div style={{ height: 200, overflow: 'scroll' }}>
+                <List multipleLine>
+                  {
+                  musicLists && musicLists.map((value,key)=>{
+                    return  (
+
+                        <Item onClick={()=>alert(key)}>{value.songListName}</Item>
+
+                    )
+
+                  })
+                }
+                </List>
+            </div>
+          </Modal>
 
 
         </WingBlank>

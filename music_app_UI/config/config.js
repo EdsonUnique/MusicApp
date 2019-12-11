@@ -67,7 +67,7 @@ export default {
   },
   outputPath: './deploy/dist',
   hash: true,
-  base:'/MusicApp',
+  publicPath:'/yx/MusicApp/',
   alias: {
     '@': path.resolve(__dirname, 'src'),
   },
