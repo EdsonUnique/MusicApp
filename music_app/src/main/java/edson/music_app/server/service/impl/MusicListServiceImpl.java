@@ -4,7 +4,9 @@ import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import edson.music_app.entity.Musiclist;
+import edson.music_app.entity.Songforlist;
 import edson.music_app.entityMapper.MusiclistMapper;
+import edson.music_app.entityMapper.SongforlistMapper;
 import edson.music_app.exceptions.MyException;
 import edson.music_app.server.service.MusicListService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,8 @@ public class MusicListServiceImpl implements MusicListService {
 
     @Autowired
     private MusiclistMapper musiclistMapper;
+    @Autowired
+    private SongforlistMapper songforlistMapper;
 
     @Override
     public void createMusicList(String songListName) throws Exception{
@@ -52,6 +56,52 @@ public class MusicListServiceImpl implements MusicListService {
 
     @Override
     public List<Musiclist> fetchMusicLists() {
-        return musiclistMapper.selectList(null);
+
+        QueryWrapper<Musiclist> wrapper=new QueryWrapper<>();
+        wrapper.lambda().orderByDesc(Musiclist::getCreateTime);
+
+        return musiclistMapper.selectList(wrapper);
+    }
+
+    @Override
+    public void storeInMusicList(String songId, String songListId) throws Exception {
+
+        QueryWrapper<Songforlist> queryWrapper=new QueryWrapper();
+
+        queryWrapper.lambda().eq(!isBlank(songId),Songforlist::getSongId,songId)
+                .and(i->i.eq(!isBlank(songListId),Songforlist::getSongListId,songListId));
+
+
+        List<Songforlist> res=songforlistMapper.selectList(queryWrapper);
+
+        if(res.size()>0){
+            //已收藏
+            throw new MyException("歌单中已存在该歌曲！");
+        }
+
+        Songforlist songforlist=new Songforlist();
+        songforlist.setId(UUID.randomUUID().toString());
+        songforlist.setCreateTime(LocalDateTime.now());
+        songforlist.setUpdateTime(LocalDateTime.now());
+        songforlist.setSongId(songId);
+        songforlist.setSongListId(songListId);
+
+        int effects=songforlistMapper.insert(songforlist);
+
+        if(effects<=0){
+            throw new MyException("服务器错误！");
+        }
+
+        //更新该歌单中的歌曲数目
+        Musiclist musiclist=musiclistMapper.selectById(songListId);
+        musiclist.setSongSum(musiclist.getSongSum()+1);
+
+        effects=musiclistMapper.updateById(musiclist);
+
+        if(effects<=0){
+            throw new MyException("服务器错误！");
+        }
+
+
     }
 }

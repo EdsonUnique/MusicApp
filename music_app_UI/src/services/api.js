@@ -22,5 +22,14 @@ export default {
     return request(makeApiUrl(`musicList/fetchMusicLists`))
   },
 
+  async storeInMusicList(param){
+    return request(makeApiUrl(`musicList/storeInMusicList`),{
+      method:'POST',
+      body:{
+        ...param,
+      }
+    })
+  }
+
 
 }

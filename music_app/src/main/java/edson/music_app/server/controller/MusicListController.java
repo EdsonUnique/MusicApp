@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 歌单创建
@@ -41,6 +42,21 @@ public class MusicListController {
     public RestVO fetchMusicLists(){
         List<Musiclist> musiclistList=musicListService.fetchMusicLists();
         return RestWrapper.success(musiclistList);
+    }
+
+    @PostMapping("/storeInMusicList")
+    public RestVO storeInMusicList(@RequestBody Map params){
+
+        try{
+
+            musicListService.storeInMusicList(params.get("songId").toString(),params.get("songListId").toString());
+            return RestWrapper.success("收藏成功！");
+        }catch (Exception e){
+            System.err.println(e.getMessage());
+            return RestWrapper.error(e.getMessage());
+        }
+
+
     }
 
 }

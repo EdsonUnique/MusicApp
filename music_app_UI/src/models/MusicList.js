@@ -46,6 +46,19 @@ export default {
 
       })
 
+    },
+
+    *storeInMusicList({payload},{call,put}){
+
+      const response=yield call(api.storeInMusicList,payload);
+
+      if(response.code<=0){
+        Toast.info(response.msg);
+        return;
+      }
+
+      Toast.success(response.msg);
+
     }
 
 

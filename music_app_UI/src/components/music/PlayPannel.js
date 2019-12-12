@@ -9,6 +9,7 @@ import NextIcon from '@/assets/icon/next.svg';
 import changeMusicIcon from '@/assets/icon/顺序播放.svg'
 import RandomIcon from '@/assets/icon/randomPlay.svg';
 import RepeatIcon from '@/assets/icon/单曲循环.svg';
+import StoreMusic from '@/assets/icon/添加.svg';
 
 
 const prompt = Modal.prompt;
@@ -35,6 +36,7 @@ class PlayPannel extends Component{
       next:-1, //下一首
       song:this.props.song,//正在播放的歌曲
       songList:this.props.songList,
+      musicLists:this.props.musicList.musicLists,
     }
   };
 
@@ -84,12 +86,14 @@ class PlayPannel extends Component{
     audioEl.onplaying=()=>{
       window.document.getElementById("pause").setAttribute("src",PlayIcon);
 
-      durationEl.innerHTML=this.handleTimeStr(audioEl.duration);
-
       this.setState({
         duration:audioEl.duration,
         is_on:true,
       })
+
+      durationEl.innerHTML=this.handleTimeStr(audioEl.duration);
+
+
 
     };
 
@@ -143,6 +147,9 @@ class PlayPannel extends Component{
     let seconds=time%60;
     let minutesStr=minutes.toString().substr(0,minutes.toString().indexOf('.'));
     let secondsStr=seconds.toString().substr(0,seconds.toString().indexOf('.'))
+
+    minutesStr=minutesStr.length==0?'0':minutesStr;
+    secondsStr=secondsStr.length==0?'0':secondsStr;
 
     return (minutesStr.length>=2?minutesStr:('0'+minutesStr))+":"
       +(secondsStr.length>=2?secondsStr:('0'+secondsStr));
@@ -243,17 +250,21 @@ class PlayPannel extends Component{
 
   handleStoreInMusicList=(songListId)=>{
 
-    alert(songListId)
+    const {dispatch}=this.props;
+    dispatch({
+      type:"musicList/storeInMusicList",
+      payload:{
+        songId:this.state.song.songId,
+        songListId:songListId,
+      }
+    });
+    this.setState({
+      modal1:false,
+    })
+
   };
 
 
-
-
-    // operation(
-    //   musicLists.map((value,key) => {
-    //     return { text: value.songListName, onPress: () => console.log(value.songListName) }
-    //   })
-    // );
 
 
   handleChangeMusic=id=>{
@@ -319,7 +330,13 @@ class PlayPannel extends Component{
             payload:{
               songListName:value,
             }
+          }).then(()=>{
+            //更新歌单
+            this.props.dispatch({
+              type:'musicList/fetchMusicLists',
+            });
           })
+
             resolve();
 
           setTimeout(() => {
@@ -334,7 +351,7 @@ class PlayPannel extends Component{
     const{
       songList,
       musicList:{
-        musicLists,
+        musicLists
       }
     }=this.props;
 
@@ -348,35 +365,45 @@ class PlayPannel extends Component{
           <div className={styles.musicIcon}>
 
           </div>
+          {/*<div className={styles.loading}>*/}
+          {/*  */}
+          {/*</div>*/}
           <div className={styles.controls}>
-            <div >
-              <Slider
-                id={'slider'}
-                style={{ marginLeft: 30, marginRight: 30 }}
-                value={this.state.audioCurrentTime}
-                min={0}
-                max={this.state.duration}
-                onChange={sliderTime=>this.handleChangeMusicTime(sliderTime)}
-                trackStyle={{
-                  backgroundColor: '#bbb',
-                  height: '5px',
-                }}
-                railStyle={{
-                  backgroundColor: 'grey',
-                  height: '5px',
-                }}
-                handleStyle={{
-                  borderColor: 'dark',
-                  height: '7px',
-                  width: '7px',
-                  marginLeft: '-7px',
-                  marginTop: '-1px',
-                  backgroundColor: 'blue',
-                }}
-              />
-              <div className={styles.marks}>
-                <span id={'progress'}>00:00</span>
-                <span id={'duration'}>00:00</span>
+
+            <div>
+                <Slider
+                  id={'slider'}
+                  style={{ marginLeft: 30, marginRight: 30 }}
+                  value={this.state.audioCurrentTime}
+                  min={0}
+                  max={this.state.duration}
+                  onChange={sliderTime=>this.handleChangeMusicTime(sliderTime)}
+                  trackStyle={{
+                    backgroundColor: '#bbb',
+                    height: '5px',
+                  }}
+                  railStyle={{
+                    backgroundColor: 'grey',
+                    height: '5px',
+                  }}
+                  handleStyle={{
+                    borderColor: 'dark',
+                    height: '7px',
+                    width: '7px',
+                    marginLeft: '-7px',
+                    marginTop: '-1px',
+                    backgroundColor: 'blue',
+                  }}
+
+                />
+              <div >
+                <Icon type={'loading'} size={'xxs'} hidden={this.state.duration>0?'hidden':''}/>
+
+                <div className={styles.marks} hidden={this.state.duration<0?'hidden':''}>
+                  <span id={'progress'}>00:00</span>
+                  <span id={'duration'}>00:00</span>
+                </div>
+
               </div>
             </div>
             <div className={styles.controls2}>
@@ -403,10 +430,11 @@ class PlayPannel extends Component{
             <div style={{ height: 200, overflow: 'scroll' }}>
                 <List multipleLine>
                   {
+                    musicLists && musicLists.length<=0?(<Item><span style={{color:'red'}}>暂无已建歌单</span></Item>):
                   musicLists && musicLists.map((value,key)=>{
                     return  (
 
-                        <Item onClick={()=>alert(key)}>{value.songListName}</Item>
+                        <Item thumb={StoreMusic} onClick={()=>this.handleStoreInMusicList(value.songListId)}>{value.songListName}</Item>
 
                     )
 

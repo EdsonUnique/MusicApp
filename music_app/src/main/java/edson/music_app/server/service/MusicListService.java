@@ -12,4 +12,6 @@ public interface MusicListService {
 
     List<Musiclist> fetchMusicLists();
 
+    void storeInMusicList(String songId,String songListId) throws Exception;
+
 }
