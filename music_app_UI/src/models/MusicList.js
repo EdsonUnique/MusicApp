@@ -10,6 +10,7 @@ export default {
   state:{
 
     musicLists:[],//歌单数组
+    songs:[],//某一歌单中的所有歌曲
 
   },
 
@@ -59,6 +60,23 @@ export default {
 
       Toast.success(response.msg);
 
+    },
+
+    *fetchSongs({payload},{call,put}){
+
+      const response=yield call(api.fetchSongs,payload.songListId);
+
+      if(response.code<=0){
+        Toast.fail(response.msg);
+        return ;
+      }
+
+      yield put({
+        type:'fetchSongsSuccess',
+        payload:response.data,
+
+      })
+
     }
 
 
@@ -72,7 +90,20 @@ export default {
         ...state,
         musicLists:payload,
       }
+    },
+
+    fetchSongsSuccess(state,{payload}){
+      return{
+        ...state,
+        songs: payload.map((item)=>{
+          return({
+            ...item,
+            audioPath:STATIC_SEVER_URL+`/`+item.songPath,
+          })
+        }),
+      }
     }
+
 
   }
 

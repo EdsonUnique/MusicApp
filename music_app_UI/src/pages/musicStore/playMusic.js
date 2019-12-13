@@ -15,14 +15,14 @@ class PlayMusic extends Component {
   render(){
 
     const {
-      song,songList,
+      song,songList,songArrayId
     }=this.props;
 
     return(
       <div className={styles.container} >
 
         <Nav isIndex={false} musicId={1} title={''}/>
-        <PlayPannel song={song} songList={songList}/>
+        <PlayPannel song={song} songList={songList} songArrayId={songArrayId}/>
 
       </div>
     )

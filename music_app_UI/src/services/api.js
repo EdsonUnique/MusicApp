@@ -29,6 +29,10 @@ export default {
         ...param,
       }
     })
+  },
+
+  async fetchSongs(param){
+    return request(makeApiUrl(`musicList/fetchSongs/`+param))
   }
 
 

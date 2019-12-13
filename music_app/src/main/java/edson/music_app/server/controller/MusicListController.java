@@ -2,7 +2,9 @@ package edson.music_app.server.controller;
 
 import edson.music_app.core.RestVO;
 import edson.music_app.core.RestWrapper;
+import edson.music_app.entity.Music;
 import edson.music_app.entity.Musiclist;
+import edson.music_app.server.model.MusicModel;
 import edson.music_app.server.service.MusicListService;
 import org.apache.ibatis.annotations.MapKey;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,6 +59,14 @@ public class MusicListController {
         }
 
 
+    }
+
+    @RequestMapping("/fetchSongs/{songListId}")
+    public RestVO fetchSongs(@PathVariable("songListId") String songListId){
+
+        List<MusicModel> musicModels=musicListService.fetchSongs(songListId);
+
+        return RestWrapper.success(musicModels);
     }
 
 }

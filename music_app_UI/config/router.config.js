@@ -15,8 +15,17 @@ export default [
         path:'/playMusic',
         component:'./musicStore/main',
       },
+      {
+        path:'/userMusicList',
+        component:'./userCenter/UserMusicList',
+      },
+      {
+        path:'/listSongs',
+        component:'./userCenter/ListSongs',
+      },
 
-      ],
+
+    ],
   },
 
 

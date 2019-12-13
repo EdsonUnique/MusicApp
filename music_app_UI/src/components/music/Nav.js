@@ -17,12 +17,13 @@ class Nav extends PureComponent{
     const {
       title="飞 云 音 乐",
       isIndex=true,
+      color="transparent"
     }=this.props;
 
     return (
       <NavBar
         mode={isIndex?"light":'none'}
-        style={isIndex?{backgroundColor:"#1296db"}:{backgroundColor:"transparent"}}
+        style={isIndex?{backgroundColor:"#1296db"}:{backgroundColor:color}}
         icon={isIndex?'':<img src={ReturnIcon}/>}
         leftContent={[
           isIndex?'':"返回"

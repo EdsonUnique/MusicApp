@@ -6,6 +6,7 @@ import {List, Modal, Button, WhiteSpace, WingBlank, Toast} from 'antd-mobile';
 import PlayIcon  from '../../assets/icon/播放.svg'
 import PauseIcon from '../../assets/icon/暂停.svg'
 import MusicIcon from '../../assets/icon/音符.svg'
+import NoResult from '@/components/music/NoResult'
 
 const Item = List.Item;
 const operation = Modal.operation;
@@ -43,15 +44,11 @@ class SongList extends PureComponent{
 
       });
 
-      window.document.getElementById(songId).setAttribute("src",PlayIcon);
+      let el=window.document.getElementById(songId);
+      if(el){
+        el.setAttribute("src",PlayIcon);
+      }
     }
-
-
-
-
-
-
-
   };
 
   handlePlayMusic=(path)=>{
@@ -65,10 +62,10 @@ class SongList extends PureComponent{
     })
   };
 
-    handleHeader=(songSum)=>{
+    handleHeader=(songSum,title)=>{
       return (
         <div className={styles.header}>
-          <span className={styles.headerLeft}>歌曲库</span>
+          <span className={styles.headerLeft}>{title}</span>
           <span className={styles.headerRight}>共 {songSum} 首</span>
         </div>
 
@@ -85,7 +82,7 @@ class SongList extends PureComponent{
       )
     };
 
-  handlePlayImage=(value)=>{
+  handlePlayImage=(value,songArrayId)=>{
 
 
     const el= window.parent.document.getElementById('audioIframe').contentWindow.document.getElementById("audioId");
@@ -107,6 +104,7 @@ class SongList extends PureComponent{
           query:{
             song:value,
             songList:this.props.songs,
+            songArrayId:songArrayId,
           }
         })
       }else if(this.state.record_id !== -1 && value.songId>-1){//有歌曲播放
@@ -119,6 +117,7 @@ class SongList extends PureComponent{
             query:{
               song:value,
               songList:this.props.songs,
+              songArrayId:songArrayId,
             }
           })
           // window.document.getElementById(value.songId).setAttribute("src",PauseIcon);
@@ -147,6 +146,7 @@ class SongList extends PureComponent{
             query:{
               song:value,
               songList:this.props.songs,
+              songArrayId:songArrayId,
             }
           })
         }
@@ -165,6 +165,7 @@ class SongList extends PureComponent{
         songSum=0,
         songs,
         PlayMusicPath='/playMusic',
+        title='歌曲库',
 
       }=this.props;
 
@@ -176,11 +177,12 @@ class SongList extends PureComponent{
 
 
           <List
-            renderHeader={() => this.handleHeader(songSum)}
+            renderHeader={() => this.handleHeader(songSum,title)}
             renderFooter={() => this.handleFooter()}
             className={styles.myList}
           >
             {
+              songs && songs.length<=0?<NoResult content={''}/>:
               songs && songs!==undefined && songs.map((value,key)=>{
 
                 return(
@@ -190,7 +192,7 @@ class SongList extends PureComponent{
                       thumb={MusicIcon}
                       extra={ <img style={{zIndex:2}} src={this.state.thumb_img} id={value.songId} ></img>}
                       style={{width:"100%"}}
-                      onClick={()=>this.handlePlayImage(value)}
+                      onClick={()=>this.handlePlayImage(value,key)}
                       className={styles.songItem}
                     >
                       <span className={styles.songName}>{value.songName}</span>

@@ -8,6 +8,8 @@ import edson.music_app.entity.Songforlist;
 import edson.music_app.entityMapper.MusiclistMapper;
 import edson.music_app.entityMapper.SongforlistMapper;
 import edson.music_app.exceptions.MyException;
+import edson.music_app.server.ModelMapper.MusicModelMapper;
+import edson.music_app.server.model.MusicModel;
 import edson.music_app.server.service.MusicListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +29,8 @@ public class MusicListServiceImpl implements MusicListService {
     private MusiclistMapper musiclistMapper;
     @Autowired
     private SongforlistMapper songforlistMapper;
+    @Autowired
+    private MusicModelMapper musicModelMapper;
 
     @Override
     public void createMusicList(String songListName) throws Exception{
@@ -103,5 +107,10 @@ public class MusicListServiceImpl implements MusicListService {
         }
 
 
+    }
+
+    @Override
+    public List<MusicModel> fetchSongs(String songListId) {
+        return musicModelMapper.fetchSongs(songListId);
     }
 }

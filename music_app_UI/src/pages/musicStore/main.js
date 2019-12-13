@@ -44,7 +44,7 @@ class Main extends PureComponent{
 
     const song=this.props.location?this.props.location.query.song : undefined;
     const songList=this.props.location?this.props.location.query.songList : undefined;
-
+    const songArrayId=this.props.location?this.props.location.query.songArrayId : undefined;
 
     return (
       <div>
@@ -61,7 +61,7 @@ class Main extends PureComponent{
           <MainMusicStore />
         </div>
         <div id={'playMusic'}>
-          <PlayMusic song={song} songList={songList}/>
+          <PlayMusic song={song} songList={songList} songArrayId={songArrayId}/>
         </div>
 
 

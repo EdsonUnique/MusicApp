@@ -34,6 +34,7 @@ class PlayPannel extends Component{
       audioCurrentTime:0, //正在播放的时刻
       pre:-1, //上一首
       next:-1, //下一首
+      songArrayId:this.props.songArrayId,//正在播放的歌曲在数组中的位置
       song:this.props.song,//正在播放的歌曲
       songList:this.props.songList,
       musicLists:this.props.musicList.musicLists,
@@ -178,7 +179,6 @@ class PlayPannel extends Component{
 
   handlePre=(songId,songList)=>{
 
-    songId=songId-1;//歌曲id与数组下标设为一致
     let preId=0;
     let songSum=songList.length;
 
@@ -207,6 +207,7 @@ class PlayPannel extends Component{
     this.setState({
       pre:preId,
       song:songList[preId],
+      songArrayId: preId,
     })
     audioEl.play();
 
@@ -214,7 +215,6 @@ class PlayPannel extends Component{
 
   handleNext=(songId,songList)=>{
 
-    songId=songId-1;//歌曲id与数组下标设为一致
     let nextId=0;
     let songSum=songList.length;
 
@@ -243,6 +243,7 @@ class PlayPannel extends Component{
     this.setState({
       next:nextId,
       song:songList[nextId],
+      songArrayId:nextId,
     })
     audioEl.play();
 
@@ -408,9 +409,9 @@ class PlayPannel extends Component{
             </div>
             <div className={styles.controls2}>
               <img id={"changeMusic"} src={changeMusicIcon} style={{width:"30px",height:"30px"}} onClick={()=>this.handleChangeMusic((this.state.changeId+1)%3)}></img>
-              <img id={"pre"} src={PreIcon} style={{width:"40px",height:"30px"}} onClick={()=>this.handlePre(this.state.song && this.state.song.songId,songList)}></img>
+              <img id={"pre"} src={PreIcon} style={{width:"40px",height:"30px"}} onClick={()=>this.handlePre(this.state.songArrayId,songList)}></img>
               <img id={"pause"} src={PauseIcon} style={{width:"40px",height:"30px"}} onClick={()=>this.handlePlay()}></img>
-              <img id={"next"} src={NextIcon} style={{width:"40px",height:"30px"}} onClick={()=>this.handleNext(this.state.song && this.state.song.songId,songList)}></img>
+              <img id={"next"} src={NextIcon} style={{width:"40px",height:"30px"}} onClick={()=>this.handleNext(this.state.songArrayId,songList)}></img>
 
               <Icon type={"ellipsis"} size={{width:"40px",height:"30px"}} color={"grey"} onClick={()=>operation([
                 { text: '创建歌单', onPress: this.handleCreateMusicList },
