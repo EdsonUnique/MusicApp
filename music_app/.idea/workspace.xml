@@ -2,30 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9090a00d-5170-4c11-8d5c-8c47bbba66c3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/edson/music_app/server/ModelMapper/MusicModelMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/edson/music_app/server/ModelMapper/MusicModelMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../music_app_UI/src/assets/icon/歌单.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../music_app_UI/src/assets/icon/歌单收录.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../music_app_UI/src/components/music/NoResult.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../music_app_UI/src/pages/userCenter/ListSongs.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../music_app_UI/src/pages/userCenter/UserMusicList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/edson/music_app/MusicAppApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edson/music_app/MusicAppApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../music_app_UI/src/assets/icon/新建歌单.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../music_app_UI/src/pages/userCenter/UserMusicList.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edson/music_app/server/controller/MusicController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edson/music_app/server/controller/MusicController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edson/music_app/server/controller/MusicListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edson/music_app/server/controller/MusicListController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edson/music_app/server/service/MusicListService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edson/music_app/server/service/MusicListService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edson/music_app/server/service/MusicService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edson/music_app/server/service/MusicService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/edson/music_app/server/service/impl/MusicListServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edson/music_app/server/service/impl/MusicListServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/edson/music_app/server/service/impl/MusicServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edson/music_app/server/service/impl/MusicServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/edson/music_app/MusicAppApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edson/music_app/MusicAppApplication.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/edson/music_app/server/controller/MusicListController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edson/music_app/server/controller/MusicListController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/edson/music_app/server/service/MusicListService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edson/music_app/server/service/MusicListService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/edson/music_app/server/service/impl/MusicListServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edson/music_app/server/service/impl/MusicListServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../music_app_UI/config/router.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../music_app_UI/config/router.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../music_app_UI/src/components/music/Nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/../music_app_UI/src/components/music/Nav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../music_app_UI/src/components/music/SearchButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/../music_app_UI/src/components/music/SearchButton.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../music_app_UI/src/components/music/songList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../music_app_UI/src/components/music/songList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../music_app_UI/src/models/Music.js" beforeDir="false" afterPath="$PROJECT_DIR$/../music_app_UI/src/models/Music.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../music_app_UI/src/models/MusicList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../music_app_UI/src/models/MusicList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../music_app_UI/src/pages/userCenter/mainUserCenter.js" beforeDir="false" afterPath="$PROJECT_DIR$/../music_app_UI/src/pages/userCenter/mainUserCenter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../music_app_UI/src/pages/userCenter/UserMusicList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../music_app_UI/src/pages/userCenter/UserMusicList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../music_app_UI/src/services/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/../music_app_UI/src/services/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../music_app_UI/src/utils/fetchUtil.js" beforeDir="false" afterPath="$PROJECT_DIR$/../music_app_UI/src/utils/fetchUtil.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -43,8 +39,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/edson/music_app/server/controller/MusicListController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
-              <caret line="63" column="44" selection-start-line="63" selection-start-column="44" selection-end-line="63" selection-end-column="44" />
+            <state relative-caret-position="69">
+              <caret line="76" column="44" selection-start-line="76" selection-start-column="44" selection-end-line="76" selection-end-column="44" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/edson/music_app/server/service/MusicListService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="303">
+              <caret line="17" column="23" lean-forward="true" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -55,61 +63,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="8" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="55" />
+            <state relative-caret-position="132">
+              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edson/music_app/server/ModelMapper/MusicModelMapper.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/edson/music_app/server/ModelMapper/MusicModelMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="269">
+              <caret line="13" column="7" lean-forward="true" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edson/music_app/server/ModelMapper/MusicModelMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="9" column="44" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edson/music_app/server/model/MusicModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="4" column="39" lean-forward="true" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edson/music_app/MusicAppApplication.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#344#345#0" expanded="true" />
-                <element signature="e#414#415#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/edson/music_app/server/service/impl/MusicServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-79">
-              <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+            <state relative-caret-position="61">
+              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -120,8 +93,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/edson/music_app/server/controller/MusicController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="20" selection-start-line="20" selection-end-line="20" />
+            <state relative-caret-position="160">
+              <caret line="25" column="48" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/edson/music_app/server/service/MusicService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="11" column="47" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -132,22 +117,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/edson/music_app/server/service/impl/MusicListServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="112" column="30" lean-forward="true" selection-start-line="112" selection-start-column="30" selection-end-line="112" selection-end-column="30" />
+            <state relative-caret-position="56">
+              <caret line="71" column="53" lean-forward="true" selection-start-line="71" selection-start-column="53" selection-end-line="71" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3553#3554#0" expanded="true" />
-                <element signature="e#3580#3581#0" expanded="true" />
+                <element signature="e#3723#3724#0" expanded="true" />
+                <element signature="e#3785#3786#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+        <entry file="file://$PROJECT_DIR$/src/main/java/edson/music_app/entity/Music.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="44" column="42" selection-start-line="44" selection-start-column="42" selection-end-line="44" selection-end-column="42" />
+            <state relative-caret-position="-166">
+              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
             </state>
           </provider>
         </entry>
@@ -176,18 +161,18 @@
         <option value="$PROJECT_DIR$/src/main/java/edson/music_app/core/RestVO.java" />
         <option value="$PROJECT_DIR$/src/main/java/edson/music_app/core/RestWrapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/edson/music_app/core/MyConfiguration.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edson/music_app/server/service/MusicService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edson/music_app/server/service/impl/MusicServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edson/music_app/server/controller/MusicController.java" />
         <option value="$PROJECT_DIR$/src/main/java/edson/music_app/security/FilterCORS.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edson/music_app/server/service/MusicListService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edson/music_app/server/controller/MusicListController.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/edson/music_app/server/service/impl/MusicListServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/edson/music_app/server/ModelMapper/MusicModelMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/edson/music_app/MusicAppApplication.java" />
         <option value="$PROJECT_DIR$/src/main/java/edson/music_app/server/ModelMapper/MusicModelMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/edson/music_app/server/service/MusicListService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edson/music_app/server/controller/MusicListController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edson/music_app/server/service/impl/MusicListServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edson/music_app/server/service/MusicService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edson/music_app/server/controller/MusicController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edson/music_app/server/service/impl/MusicServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -215,8 +200,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-45" />
-    <option name="y" value="136" />
+    <option name="x" value="-26" />
+    <option name="y" value="53" />
     <option name="width" value="1346" />
     <option name="height" value="688" />
   </component>
@@ -229,6 +214,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -360,7 +346,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -371,7 +356,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../MyTemplate" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../deduct-goods-managerment/deduct-goods-managerment-server" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
@@ -465,12 +450,13 @@
       <workItem from="1575966630655" duration="650000" />
       <workItem from="1576027841299" duration="7278000" />
       <workItem from="1576113543675" duration="5891000" />
-      <workItem from="1576199420853" duration="6347000" />
+      <workItem from="1576199420853" duration="6963000" />
+      <workItem from="1576460360807" duration="6939000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36859000" />
+    <option name="totallyTimeSpent" value="44414000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
@@ -480,7 +466,7 @@
       <window_info id="Capture Tool" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.28927493" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.29380664" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="0" />
@@ -490,8 +476,8 @@
       <window_info anchor="bottom" id="Docker" order="4" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="5" />
       <window_info anchor="bottom" id="Find" order="6" />
-      <window_info active="true" anchor="bottom" id="Run" order="7" visible="true" weight="0.5846906" />
-      <window_info anchor="bottom" id="Debug" order="8" weight="0.14983714" />
+      <window_info active="true" anchor="bottom" id="Run" order="7" visible="true" weight="0.58957654" />
+      <window_info anchor="bottom" id="Debug" order="8" weight="0.25081432" />
       <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="11" />
@@ -514,6 +500,16 @@
     <option name="version" value="1" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/edson/music_app/server/service/impl/MusicListServiceImpl.java</url>
+          <line>122</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="SpringBootApplicationConfigurationType">
         <watch expression="params.get(&quot;songId&quot;)" />
@@ -580,27 +576,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edson/music_app/server/service/MusicService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../music_app_UI/src/components/music/songList.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="186">
           <caret line="87" column="19" selection-start-line="87" selection-start-column="19" selection-end-line="87" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edson/music_app/entity/Music.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -650,16 +629,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edson/music_app/server/service/MusicListService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edson/music_app/entityMapper/MusiclistMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
@@ -674,46 +643,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edson/music_app/server/controller/MusicController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edson/music_app/server/controller/MusicListController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="63" column="44" selection-start-line="63" selection-start-column="44" selection-end-line="63" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edson/music_app/server/service/impl/MusicServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-79">
-          <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edson/music_app/server/ModelMapper/MusicModelMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
+        <state relative-caret-position="132">
           <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -724,45 +656,114 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/edson/music_app/server/model/MusicModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
-          <caret line="4" column="39" lean-forward="true" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
+          <caret line="4" column="39" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edson/music_app/server/service/impl/MusicListServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/edson/music_app/MusicAppApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="112" column="30" lean-forward="true" selection-start-line="112" selection-start-column="30" selection-end-line="112" selection-end-column="30" />
+        <state relative-caret-position="132">
+          <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3553#3554#0" expanded="true" />
-            <element signature="e#3580#3581#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
+        <state relative-caret-position="968">
           <caret line="44" column="42" selection-start-line="44" selection-start-column="42" selection-end-line="44" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edson/music_app/MusicAppApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#344#345#0" expanded="true" />
-            <element signature="e#414#415#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edson/music_app/server/ModelMapper/MusicModelMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="44" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
+        <state relative-caret-position="269">
+          <caret line="13" column="7" lean-forward="true" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edson/music_app/server/service/MusicListService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="17" column="23" lean-forward="true" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edson/music_app/server/controller/MusicListController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="76" column="44" selection-start-line="76" selection-start-column="44" selection-end-line="76" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edson/music_app/entity/Music.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-166">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edson/music_app/server/service/MusicService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="47" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edson/music_app/server/controller/MusicController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="25" column="48" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-lang3/3.9/commons-lang3-3.9.jar!/org/apache/commons/lang3/StringUtils.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="89" column="16" lean-forward="true" selection-start-line="89" selection-start-column="16" selection-end-line="89" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edson/music_app/server/service/impl/MusicListServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="71" column="53" lean-forward="true" selection-start-line="71" selection-start-column="53" selection-end-line="71" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3723#3724#0" expanded="true" />
+            <element signature="e#3785#3786#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edson/music_app/server/service/impl/MusicServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="61">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -9,6 +9,6 @@ import java.util.List;
 @Service
 public interface MusicService {
 
-    List<Music> fetchMusicList();
+    List<Music> fetchMusicList(String searchStr);
 
 }

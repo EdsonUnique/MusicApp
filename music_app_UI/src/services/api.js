@@ -4,8 +4,8 @@ import { makeApiUrl } from '@/utils/fetchUtil'
 
 export default {
   //获取所有歌曲
-  async fetchMusicList() {
-    return request(makeApiUrl(`music/fetchMusicList`))
+  async fetchMusicList(param) {
+    return request(makeApiUrl(`music/fetchMusicList`+"?"+stringify(param)));
   },
 
   async createMusicList(songListName) {
@@ -33,6 +33,10 @@ export default {
 
   async fetchSongs(param){
     return request(makeApiUrl(`musicList/fetchSongs/`+param))
+  },
+
+  async deleteMusicList(param){
+    return request(makeApiUrl(`musicList/deleteMusicList/`+param))
   }
 
 

@@ -77,7 +77,24 @@ export default {
 
       })
 
+    },
+
+    *deleteMusicList({payload},{call,put}){
+
+      const response = yield call(api.deleteMusicList,payload.songListId);
+
+      if(response.code<=0){
+        Toast.fail(response.msg);
+        return;
+      }
+
+      yield put({
+        type:'deleteMusicListSuccess',
+        payload:payload.songListId,
+      })
+
     }
+
 
 
 
@@ -102,7 +119,14 @@ export default {
           })
         }),
       }
-    }
+    },
+
+    deleteMusicListSuccess(state,{payload:songListId}) {
+      return {
+        ...state,
+        musicLists:state.musicLists.filter(item => item.songListId !== songListId),
+      }
+    },
 
 
   }

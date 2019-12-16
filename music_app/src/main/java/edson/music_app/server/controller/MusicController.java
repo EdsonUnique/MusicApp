@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -20,9 +21,9 @@ public class MusicController {
     private MusicService musicService;
 
     @GetMapping("/fetchMusicList")
-    public RestVO fetchMusicList(){
+    public RestVO fetchMusicList(@RequestParam(value = "searchStr",required = false)String searchStr){
 
-        List<Music> musicList=musicService.fetchMusicList();
+        List<Music> musicList=musicService.fetchMusicList(searchStr);
 
         return RestWrapper.success(musicList);
     }

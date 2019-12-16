@@ -17,7 +17,7 @@ export default {
     //获取库中所有歌曲
     *fetchMusicList({payload},{call,put}){
 
-      const response=yield call(api.fetchMusicList);
+      const response=yield call(api.fetchMusicList,payload);
 
       if(response instanceof Error){
 

@@ -13,6 +13,7 @@ import edson.music_app.server.model.MusicModel;
 import edson.music_app.server.service.MusicListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -113,4 +114,35 @@ public class MusicListServiceImpl implements MusicListService {
     public List<MusicModel> fetchSongs(String songListId) {
         return musicModelMapper.fetchSongs(songListId);
     }
+
+    @Override
+    @Transactional
+    public void deleteMusicList(String songListId) throws Exception {
+
+        //判断歌单是否存在
+        Musiclist musiclist=musiclistMapper.selectById(songListId);
+
+        if(musiclist==null){
+            throw new MyException("歌单不存在！");
+        }
+
+        //删除歌单下的所有歌曲
+        QueryWrapper<Songforlist> queryWrapper=new QueryWrapper();
+
+        queryWrapper.lambda().eq(!isBlank(songListId),Songforlist::getSongListId,songListId);
+        int effects=songforlistMapper.delete(queryWrapper);
+        if(effects<0){//可能等于0
+            throw new MyException("服务器错误！");
+        }
+
+        //删除歌单
+        effects=musiclistMapper.deleteById(songListId);
+        if(effects<=0){
+            throw new MyException("服务器错误！");
+        }
+
+
+    }
+
+
 }

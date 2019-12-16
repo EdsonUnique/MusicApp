@@ -17,4 +17,6 @@ public interface MusicListService {
 
     List<MusicModel> fetchSongs(String songListId);
 
+    void deleteMusicList(String songListId) throws Exception;
+
 }

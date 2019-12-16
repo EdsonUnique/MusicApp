@@ -131,7 +131,8 @@ class SongList extends PureComponent{
           //点击的是另外未播放的歌曲
           //将正在播放的歌曲停止
           el.pause();
-          window.document.getElementById(this.state.record_id).setAttribute("src",PauseIcon);
+          let playingImage=window.document.getElementById(this.state.record_id);
+          playingImage?playingImage.setAttribute("src",PauseIcon):'';
           //更换歌曲
           el.setAttribute("src",value.audioPath);
           el.setAttribute('songId',value.songId);
@@ -190,7 +191,7 @@ class SongList extends PureComponent{
                   <div className={styles.myItem}>
                     <Item
                       thumb={MusicIcon}
-                      extra={ <img style={{zIndex:2}} src={this.state.thumb_img} id={value.songId} ></img>}
+                      extra={ <img style={{zIndex:2}} src={this.state.record_id===value.songId?PlayIcon:PauseIcon} id={value.songId} ></img>}
                       style={{width:"100%"}}
                       onClick={()=>this.handlePlayImage(value,key)}
                       className={styles.songItem}

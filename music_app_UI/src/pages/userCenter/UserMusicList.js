@@ -1,12 +1,16 @@
 import React,{Component} from 'react';
 import Nav from '@/components/music/Nav'
-import {List,WingBlank,SwipeAction,NoticeBar,Icon,WhiteSpace} from 'antd-mobile'
+import {List,Modal,SwipeAction,NoticeBar,WingBlank,WhiteSpace,Icon} from 'antd-mobile'
 import Icon1 from '@/assets/icon/歌单收录.svg';
 import NoResult from '@/components/music/NoResult'
 import { connect } from 'dva'
 import router from 'umi/router'
+import styles from './UserMusicList.less'
+import MusicListIcon from '@/assets/icon/新建歌单.svg'
 
 const Item = List.Item;
+const alert = Modal.alert;
+const prompt = Modal.prompt;
 
 @connect(({musicList})=>({
   musicList,
@@ -19,6 +23,19 @@ class UserMusicList extends Component{
 
     dispatch({
       type:"musicList/fetchMusicLists",
+    })
+
+  };
+
+  handleDeleteMusicList=(songListId)=>{
+
+    const{dispatch}=this.props;
+
+    dispatch({
+      type:'musicList/deleteMusicList',
+      payload:{
+        songListId,
+      }
     })
 
   };
@@ -45,6 +62,54 @@ class UserMusicList extends Component{
 
   };
 
+  handleCreateMusicList=()=>prompt('新建歌单', '',
+    [
+      {
+        text: '取消',
+        onPress: value => new Promise((resolve) => {
+          setTimeout(() => {
+            resolve();
+          }, 500);
+        }),
+      },
+      {
+        text: '确定',
+        onPress: value => new Promise((resolve, reject) => {
+
+          this.props.dispatch({
+            type:'musicList/create',
+            payload:{
+              songListName:value,
+            }
+          }).then(()=>{
+            //更新歌单
+            this.props.dispatch({
+              type:'musicList/fetchMusicLists',
+            });
+          })
+
+          resolve();
+
+          setTimeout(() => {
+            reject();
+          }, 1000);
+        }),
+      },
+    ], '请输入歌单名', null, ['请输入歌单名'])
+
+  handleHeader=()=>{
+    return (
+      <div className={styles.header}>
+        <span className={styles.headerLeft}>我的歌单</span>
+        <span className={styles.headerRight}>
+
+          <img src={MusicListIcon} style={{width:'15px',height:'15px'}} onClick={()=>this.handleCreateMusicList()}></img>
+        </span>
+      </div>
+
+    )
+  };
+
   render() {
 
     const{
@@ -61,25 +126,22 @@ class UserMusicList extends Component{
           点击查看歌单，左滑有更多操作哦！
         </NoticeBar>
         <WhiteSpace size={"xs"}/>
-        {/*<WingBlank>*/}
-          <List>
-
+        <WingBlank>
+          <List renderHeader={()=>this.handleHeader()}>
               {
                 musicLists && musicLists.length<=0?<NoResult/>:
-                  musicLists.map((value,key)=>{
+                  musicLists && musicLists.map((value,key)=>{
                     return(
                       <SwipeAction
                         style={{ backgroundColor: 'gray' }}
                         autoClose
                         right={[
                           {
-                            text: 'button1',
-                            onPress: () => alert("cancel"),
-                            style: { backgroundColor: '#ddd', color: 'white' },
-                          },
-                          {
-                            text: 'button2',
-                            onPress: () => alert("delete"),
+                            text: '删除',
+                            onPress: () => alert('删除歌单', '确定删除？', [
+                              { text: '否', onPress: () => {} },
+                              { text: '是', onPress: () => this.handleDeleteMusicList(value.songListId) },
+                            ]),
                             style: { backgroundColor: '#F4333C', color: 'white' },
                           },
                         ]}
@@ -94,7 +156,7 @@ class UserMusicList extends Component{
 
 
           </List>
-        {/*</WingBlank>*/}
+        </WingBlank>
       </div>
     )
   }

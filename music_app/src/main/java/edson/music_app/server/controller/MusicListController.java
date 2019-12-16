@@ -69,4 +69,20 @@ public class MusicListController {
         return RestWrapper.success(musicModels);
     }
 
+    @RequestMapping("/deleteMusicList/{songListId}")
+    public RestVO deleteMusicList(@PathVariable("songListId") String songListId){
+
+        try{
+
+            musicListService.deleteMusicList(songListId);
+            return RestWrapper.success();
+
+        }catch (Exception e){
+
+            System.err.println(e.getMessage());
+            return RestWrapper.error(e.getMessage());
+        }
+
+    }
+
 }

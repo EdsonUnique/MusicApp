@@ -1,5 +1,6 @@
 package edson.music_app.server.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import edson.music_app.entity.Music;
 import edson.music_app.entityMapper.MusicMapper;
 import edson.music_app.server.model.MusicModel;
@@ -9,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static org.apache.commons.lang3.StringUtils.isBlank;
+
 @Service
 public class MusicServiceImpl implements MusicService {
 
@@ -17,9 +20,13 @@ public class MusicServiceImpl implements MusicService {
 
 
     @Override
-    public List<Music> fetchMusicList() {
+    public List<Music> fetchMusicList(String searchStr) {
 
-        List<Music> musicList=musicMapper.selectList(null);
+        QueryWrapper<Music> queryWrapper=new QueryWrapper<>();
+        queryWrapper.lambda().like(!isBlank(searchStr),Music::getSongName,searchStr)
+                .or().like(!isBlank(searchStr),Music::getSongAuthor,searchStr);
+
+        List<Music> musicList=musicMapper.selectList(queryWrapper);
 
         return musicList;
     }

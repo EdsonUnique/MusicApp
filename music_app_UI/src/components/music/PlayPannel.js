@@ -10,6 +10,7 @@ import changeMusicIcon from '@/assets/icon/顺序播放.svg'
 import RandomIcon from '@/assets/icon/randomPlay.svg';
 import RepeatIcon from '@/assets/icon/单曲循环.svg';
 import StoreMusic from '@/assets/icon/添加.svg';
+import "core-js";
 
 
 const prompt = Modal.prompt;
