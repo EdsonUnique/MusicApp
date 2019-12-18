@@ -35,12 +35,22 @@ export default {
           defaultTitle: 'music-yx',
         },
         dll: false,
-        pwa: false,
+        pwa: {
+          manifestOptions: {
+            srcPath: 'manifest.json',
+          },
+        },
         hd: false,
         routes: {
           exclude: [],
         },
         hardSource: false,
+        metas: [
+          { charset: 'utf-8',
+            httpEquiv:'Content-Security-Policy',
+            content:'upgrade-insecure-requests'
+          }
+        ],
       },
     ],
   ],
@@ -67,7 +77,8 @@ export default {
   },
   outputPath: './deploy/dist',
   hash: true,
-  publicPath:'/yx/MusicApp/',
+  // publicPath:'/yx/MusicApp/',
+  publicPath:'/',
   alias: {
     '@': path.resolve(__dirname, 'src'),
   },

@@ -1,0 +1,14 @@
+{
+  "name": "飞云音乐APP",
+  "short_name": "飞云音乐",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#1296db",
+  "theme_color": "#1296db",
+  "description": "A simple music app.",
+  "icons": [{
+    "src": "./logo.png",
+    "sizes": "32x32",
+    "type": "image/png"
+  }]
+}
